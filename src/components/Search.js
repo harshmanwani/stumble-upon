@@ -35,7 +35,13 @@ class Search extends Component {
 	}
 
 	_executeSearch = async () => {
-		//
+		const { filter } = this.state;
+		const result = await this.props.client.query({
+			query: FEED_SEARCH_QUERY,
+			variables: { filter }
+		});
+		const links = result.data.feed.links;
+		this.setState({ links })
 	}
 
 	render() {
@@ -45,7 +51,7 @@ class Search extends Component {
 					Search
 					<input 
 						type="text"
-						onChange={e => this.setState({ filer: e.target.value })}
+						onChange={e => this.setState({ filter: e.target.value })}
 					/>
 					<button onClick={() => this._executeSearch()}>Ok</button>
 				</div>
