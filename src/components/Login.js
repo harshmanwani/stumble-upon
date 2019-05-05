@@ -18,7 +18,7 @@ class Login extends Component {
 	}
 
 	render() {
-		const { login, email, name, password } = this.statel
+		const { login, email, name, password } = this.state;
 
 		return (
 			<div>
@@ -40,7 +40,7 @@ class Login extends Component {
 					/>
 					<input 
 						type="password"
-						placeholder="Choose a safe password"
+						placeholder={login ? "Enter your password" : "Choose a safe password"}
 						value={password}
 						onChange={e => this.setState({ password: e.target.value })}
 					/>
@@ -65,4 +65,4 @@ class Login extends Component {
 	}
 }
 
-export default login;
+export default Login;
