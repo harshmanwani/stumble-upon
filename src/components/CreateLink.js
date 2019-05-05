@@ -43,6 +43,11 @@ class CreateLink extends Component {
 					/>
 				</div>
 				
+				{/* update prop on mutation is called after the server has returned a response.
+					Here it reads the localcache for FEED_QUERY and insert the newest link at the beginning
+					and write the query results back to the store. 
+				 */}
+
 				<Mutation 
 					mutation={POST_MUTATION} 
 					variables={{description, url}}
