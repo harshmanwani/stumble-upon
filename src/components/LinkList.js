@@ -3,9 +3,17 @@ import Link from './Link';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
+
+/*
+Skip defines the offset where the query will start. 
+	If you passed a value of e.g. 10 for this argument, it means that the first 10 items of the list will not be included in the response. 
+First then defines the limit, or how many elements, you want to load from that list. 
+	Say, you’re passing the 10 for skip and 5 for first, you’ll receive items 10 to 15 from the list. 
+orderBy defines how the returned list should be sorted.
+*/
 export const FEED_QUERY = gql`
-	{
-		feed {
+	query FeedQuery($first: Int, $skip: Int, $orderBy: LinkOrderByInput) {
+		feed(first: $first, skip: $skip, orderBy: $orderBy) {
 			links {
 				id
 				createdAt
@@ -115,8 +123,21 @@ const LinkList = () => {
 		})
 	}
 
+
+	const _getQueryVariables = () => {
+		const isNewPage = this.props.location.pathname.includes('new');
+		const page = parseInt(this.props.match.params.page, 10) // parseint parse the string to integer with the given base(radix) value
+
+		const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
+		const first = isNewPage ? LINKS_PER_PAGE : 100;
+		const orderBy = isNewPage ? 'createdAt_DESC' : null
+
+		return { first, skip, orderBy }
+	}
+
+
   return (
-		<Query query={FEED_QUERY}>
+		<Query query={FEED_QUERY} variables={_getQueryVariables()}>
 			{
 				({ loading, error, data, subscribeToMore }) => {
 				if(loading) return <div>Fetching</div>
@@ -124,7 +145,7 @@ const LinkList = () => {
 
 				_subscribeToNewLinks(subscribeToMore)
 				_subscribeToNewVotes(subscribeToMore)
-				
+
 				const linksToRender = data.feed.links
 
 				return (
