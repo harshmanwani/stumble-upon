@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Link from './Link';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-
+import { LINKS_PER_PAGE } from '../constants'
 
 /*
 Skip defines the offset where the query will start. 
@@ -82,7 +82,9 @@ const NEW_VOTES_SUBSCRIPTION = gql`
 	}
 `
 
-const LinkList = () => {
+const LinkList = (props) => {
+
+	const isNewPage = props.location.pathname.includes('new');
 
 	const _updateCacheAfterVote = (store, createVote, linkId) => {
 		const data = store.readQuery({ query: FEED_QUERY })
@@ -125,8 +127,7 @@ const LinkList = () => {
 
 
 	const _getQueryVariables = () => {
-		const isNewPage = this.props.location.pathname.includes('new');
-		const page = parseInt(this.props.match.params.page, 10) // parseint parse the string to integer with the given base(radix) value
+		const page = parseInt(props.match.params.page, 10) // parseint parse the string to integer with the given base(radix) value
 
 		const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
 		const first = isNewPage ? LINKS_PER_PAGE : 100;
@@ -135,6 +136,23 @@ const LinkList = () => {
 		return { first, skip, orderBy }
 	}
 
+	const _getLinksToRender = data => {
+		if(isNewPage) {
+			return data.feed.links
+		}
+		const rankedLinks = data.feed.links.slice()
+		rankedLinks.sort((l1, l2) => l2.votes.length - l2.votes.length)
+
+		return rankedLinks;
+	}
+
+	const _nextPage = data => {
+		return null;
+	}
+
+	const _previousPage = () => {
+		return null
+	}
 
   return (
 		<Query query={FEED_QUERY} variables={_getQueryVariables()}>
@@ -146,21 +164,36 @@ const LinkList = () => {
 				_subscribeToNewLinks(subscribeToMore)
 				_subscribeToNewVotes(subscribeToMore)
 
-				const linksToRender = data.feed.links
+				const linksToRender = _getLinksToRender(data)
+				const pageIndex = props.match.params.page
+					? (props.match.params.page - 1) * LINKS_PER_PAGE
+					: 0
 
 				return (
-					<div>
+					<Fragment>
 						{
 							linksToRender.map((link, index) => (
 								<Link 
-									key={link.id} 
-									link={link} 
-									index={index}
+									key={link.id}
+									link={link}
+									index={index + pageIndex}
 									updateStoreAfterVote={_updateCacheAfterVote}
 								/>)
 							)
 						}
-					</div>
+						{
+							isNewPage && (
+								<div className="flex ml4 mv3 gray">
+									<div className="pointer mr2" onClick={_previousPage}>
+										Previous
+									</div>
+									<div className="pointer" onClick={() => _nextPage(data)}>
+										Next
+									</div>
+								</div>
+							)
+						}
+					</Fragment>
 				)}
 			}
 		</Query>
