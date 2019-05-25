@@ -30,6 +30,7 @@ export const FEED_QUERY = gql`
 					}
 				}
 			}
+			count
 		}
 	}
 `
@@ -85,19 +86,26 @@ const NEW_VOTES_SUBSCRIPTION = gql`
 const LinkList = (props) => {
 
 	const isNewPage = props.location.pathname.includes('new');
+	const page = parseInt(props.match.params.page, 10) // parseint parse the string to integer with the given base(radix) value
 
 	const _updateCacheAfterVote = (store, createVote, linkId) => {
-		const data = store.readQuery({ query: FEED_QUERY })
+		const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0
+		const first = isNewPage ? LINKS_PER_PAGE : 100
+		const orderBy = isNewPage ? 'createdAt_DESC' : null
+
+		const data = store.readQuery({ 
+			query: FEED_QUERY,
+			variables: { first, skip, orderBy }
+		})
 
 		const votedLink = data.feed.links.find(link => link.id === linkId)
 		votedLink.votes = createVote.link.votes
-
 		store.writeQuery({ query: FEED_QUERY, data })
 	}
 
 	const _subscribeToNewLinks = subscribeToMore => {
 
-		//calling subscribe to more with 1. Subscription query 2. new data by comparing if its actually updated or same as old.
+		//calling subscribeToMore with 1. Subscription query 2. new data by comparing if its actually updated or same as old.
 
 		subscribeToMore({
 			document: NEW_LINKS_SUBSCRIPTION,
@@ -127,8 +135,6 @@ const LinkList = (props) => {
 
 
 	const _getQueryVariables = () => {
-		const page = parseInt(props.match.params.page, 10) // parseint parse the string to integer with the given base(radix) value
-
 		const skip = isNewPage ? (page - 1) * LINKS_PER_PAGE : 0;
 		const first = isNewPage ? LINKS_PER_PAGE : 100;
 		const orderBy = isNewPage ? 'createdAt_DESC' : null
@@ -147,7 +153,6 @@ const LinkList = (props) => {
 	}
 
 	const _nextPage = data => {
-		const page = parseInt(props.match.params.page, 10)
 		if(page <= data.feed.count / LINKS_PER_PAGE) {
 			const nextPage = page + 1
 			props.history.push(`/new/${nextPage}`)
@@ -155,7 +160,6 @@ const LinkList = (props) => {
 	}
 
 	const _previousPage = () => {
-		const page = parseInt(props.match.params.page, 10);
 		if(page > 1) {
 			const previousPage = page - 1;
 			props.history.push(`/new/${previousPage}`)
