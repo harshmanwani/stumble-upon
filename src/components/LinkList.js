@@ -147,11 +147,19 @@ const LinkList = (props) => {
 	}
 
 	const _nextPage = data => {
-		return null;
+		const page = parseInt(props.match.params.page, 10)
+		if(page <= data.feed.count / LINKS_PER_PAGE) {
+			const nextPage = page + 1
+			props.history.push(`/new/${nextPage}`)
+		}
 	}
 
 	const _previousPage = () => {
-		return null
+		const page = parseInt(props.match.params.page, 10);
+		if(page > 1) {
+			const previousPage = page - 1;
+			props.history.push(`/new/${previousPage}`)
+		}
 	}
 
   return (
