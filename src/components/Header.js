@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants'
 import Logo from './Logo';
+import '../styles/header.sass'
 
 class Header extends Component {
 	render() {
