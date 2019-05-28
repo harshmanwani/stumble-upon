@@ -43,7 +43,8 @@ class Header extends Component {
 					<div className="right">
 
 						<Link to="/search" className={page.includes('search') ? 'text-highlight' : ''}>
-							Search
+							<i className="fal fa-search"></i>
+							&nbsp;Search
 						</Link>
 
 						{authToken ? (
@@ -54,11 +55,11 @@ class Header extends Component {
 									this.props.history.push(`/`)
 								}}
 							>
-								logout
+								Logout
 							</div>
 						) : (
 							<Link to="/login" className={page.includes('login') ? 'text-highlight' : ''}>
-								login
+								Login
 							</Link>
 						)}
 
