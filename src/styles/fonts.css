@@ -1,2 +1,6 @@
-@import './EliantoRegular.sass';
 @import './fontawesome/css/all.css';
+
+@font-face {
+    font-family: 'EliantoRegular';
+    src: url('./fonts/Elianto-Regular.otf');
+}
