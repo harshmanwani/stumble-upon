@@ -3,33 +3,27 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants'
 import Logo from './Logo';
-import '../styles/header.sass'
 
 class Header extends Component {
+
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN)
+		const page = this.props.location.pathname;
 
 		return (
 			<div id="header">
-
-				<div className="header-logo">
-					<Logo />
-					<div className="tagline">
-						Stumble Upon
-					</div>
-				</div>
 
 				<div className="links">
 
 					<div className="left">
 
-						<Link to="/top" className="">
+						<Link to="/top" className={page.includes('top') ? 'text-highlight' : ''}>
 							Top
 						</Link>
 
 						{/* <div className="ml1">|</div> */}
 
-						<Link to="/" className="">
+						<Link to="/" className={page.includes('new') ? 'text-highlight' : ''}>
 							New
 						</Link>
 
@@ -38,7 +32,7 @@ class Header extends Component {
 						{authToken && (
 							<div className="flex">
 								<div className="ml1">|</div>
-								<Link to="/create" className="">
+								<Link to="/create" className={page.includes('submit') ? 'text-highlight' : ''}>
 									Submit
 								</Link>
 							</div>
@@ -48,7 +42,7 @@ class Header extends Component {
 					
 					<div className="right">
 
-						<Link to="/search" className="">
+						<Link to="/search" className={page.includes('search') ? 'text-highlight' : ''}>
 							Search
 						</Link>
 
@@ -63,17 +57,27 @@ class Header extends Component {
 								logout
 							</div>
 						) : (
-							<Link to="/login" className="">
+							<Link to="/login" className={page.includes('login') ? 'text-highlight' : ''}>
 								login
 							</Link>
 						)}
 
-						<Link to="/about" className="">
+						<Link to="/about" className={page.includes('about') ? 'text-highlight' : ''}>
 							About
 						</Link>
 					</div>
 
 				</div>
+
+
+				<div className="header-logo">
+					<Logo />
+					<div className="tagline">
+						Stumble Upon
+					</div>
+				</div>
+
+
 			</div>
 		)
 	}
