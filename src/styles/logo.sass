@@ -1,0 +1,81 @@
+
+.logo
+  .logo-container
+    width: 80px
+    height: 180px
+    margin: 0 auto
+    position: relative
+
+  .square
+    position: absolute
+    width: 50px
+    height: 50px
+    left: 20px
+
+  .face-top
+    transform: rotate(-45deg) skew(15deg, 15deg)
+
+  .side
+    transform: rotate(-45deg) skew(15deg, 15deg)
+    transform-origin: bottom left
+
+  .side-2
+    transform: rotate(-45deg) skew(15deg, 15deg)
+    transform-origin: top left
+    
+  .square-one
+    background: #dd1d35
+    z-index: 5
+    top: 104px
+    animation: ascend-1 1s .5s 1 forwards
+  .square-two
+    background: #e44a5d
+    top: 104px
+    z-index: 4
+    animation: ascend-2 .8s .5s 1 forwards
+    
+  .square-three
+    background: #a61628
+    top: 104px
+  .square-four
+    background: #dd1d35
+    top: 104px
+    left: 44px
+    animation: morph-1 0.6s .6s 1 forwards ease-in-out
+    
+  .square-five
+    background: #a61628
+    top: 25px
+    left: 0px
+    opacity: 0
+    animation: morph-2 0.6s 1.1s 1 forwards ease-in-out
+    
+  @keyframes ascend-1
+    0%
+      top: 104px
+    100%
+      top: 0px
+  @keyframes ascend-2
+    0%
+      top: 104px
+    100%
+      top: 52px
+  @keyframes morph-1
+    0%
+      transform: rotate(-45deg) skew(15deg, 15deg)
+    100%
+      transform: rotate(-45deg) skew(-45deg, 15deg)
+      height: 37px
+      top: 118px
+  @keyframes morph-2
+    0%
+      transform: rotate(-45deg) skew(15deg, 15deg)
+      opacity: 0
+    98%
+      opacity: 1
+    100%
+      top: 26px
+      left: 1px
+      transform: rotate(-15deg) skew(-15deg, -15deg)
+      opacity: 1
+    
