@@ -2,61 +2,77 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants'
-
+import Logo from './Logo';
 
 class Header extends Component {
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN)
 
 		return (
-			<div className="flex pa1 justify-between nowrap orange">
-				<div className="flex flex-fixed black">
-					
-					<div className="fw7 mr1">Hacker News</div>
-					
-					<Link to="/" className="ml1 no-underline black">
-						new
-					</Link>
+			<div id="header">
 
-					<div className="ml1">|</div>
-
-					<Link to="/top" className="ml1 no-underline black">
-						top
-					</Link>
-
-					<div className="ml1">|</div>
-				  	
-				  	<Link to="/search" className="ml1 no-underline black">
-				    	search
-				  	</Link>
-
-					{authToken && (
-						<div className="flex">
-							<div className="ml1">|</div>
-							<Link to="/create" className="ml1 no-underline black">
-								submit
-							</Link>
-						</div>
-					)}
+				<div className="header-logo">
+					<Logo />
+					<div className="tagline">
+						Stumble Upon
+					</div>
 				</div>
 
-				<div className="flex flex-fixed">
-			        {authToken ? (
-			          <div
-			            className="ml1 pointer black"
-			            onClick={() => {
-			              localStorage.removeItem(AUTH_TOKEN)
-			              this.props.history.push(`/`)
-			            }}
-			          >
-			            logout
-			          </div>
-			        ) : (
-			          <Link to="/login" className="ml1 no-underline black">
-			            login
-			          </Link>
-			        )}
-		      </div>
+				<div className="links">
+
+					<div className="left">
+
+						<Link to="/top" className="">
+							Top
+						</Link>
+
+						{/* <div className="ml1">|</div> */}
+
+						<Link to="/" className="">
+							New
+						</Link>
+
+						{/* <div className="ml1">|</div> */}
+
+						{authToken && (
+							<div className="flex">
+								<div className="ml1">|</div>
+								<Link to="/create" className="">
+									Submit
+								</Link>
+							</div>
+						)}
+					</div>
+
+					
+					<div className="right">
+
+						<Link to="/search" className="">
+							Search
+						</Link>
+
+						{authToken ? (
+							<div
+								className=""
+								onClick={() => {
+									localStorage.removeItem(AUTH_TOKEN)
+									this.props.history.push(`/`)
+								}}
+							>
+								logout
+							</div>
+						) : (
+							<Link to="/login" className="">
+								login
+							</Link>
+						)}
+
+						<Link to="/about" className="">
+							About
+						</Link>
+					</div>
+
+				</div>
 			</div>
 		)
 	}

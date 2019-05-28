@@ -13,4 +13,4 @@ const Logo = () => (
     </div>
 )
 
-export const Logo;
+export default Logo;
