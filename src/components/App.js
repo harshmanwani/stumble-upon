@@ -6,7 +6,8 @@ import CreateLink from './CreateLink';
 import Login from './Login';
 import Search from './Search';
 
-import '../styles/App.css';
+import '../styles/fonts.css';
+import '../styles/App.sass';
 
 class App extends Component {
   render(){
