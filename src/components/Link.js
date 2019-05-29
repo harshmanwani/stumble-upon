@@ -41,6 +41,9 @@ const Link = (props) => {
 							<div onClick={voteMutation}>
 								<i className="fas fa-sort-up">
 								</i>
+								<div className="votes-number">
+									{props.link.votes.length}
+								</div>
 							</div>
 						)}
 					</Mutation>
@@ -51,12 +54,12 @@ const Link = (props) => {
 					{props.link.description}
 				</div>
 				<div className="link-details">
-					{props.link.votes.length} votes | by{' '}
+					by{' '}
 					{props.link.postedBy
 					  ? props.link.postedBy.name
 					  : 'Unknown'
 					}
-					&nbsp;
+					{' ● '}
 					{timeDifferenceForDate(props.link.createdAt)}
 				</div>
 			</div>
