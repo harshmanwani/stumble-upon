@@ -30,12 +30,9 @@ class Header extends Component {
 						{/* <div className="ml1">|</div> */}
 
 						{authToken && (
-							<div className="flex">
-								<div className="ml1">|</div>
 								<Link to="/create" className={page.includes('submit') ? 'text-highlight' : ''}>
 									Submit
 								</Link>
-							</div>
 						)}
 					</div>
 
@@ -49,7 +46,6 @@ class Header extends Component {
 
 						{authToken ? (
 							<div
-								className=""
 								onClick={() => {
 									localStorage.removeItem(AUTH_TOKEN)
 									this.props.history.push(`/`)
