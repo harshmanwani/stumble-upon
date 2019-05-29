@@ -1,13 +1,17 @@
+// $text-dark: #fff
 $text-dark: #4b4a4f
 $text-light: #aaafc6
-$text-highlight: #e44a5d
+$theme-color: #e44a5d
     
 @import './header.sass'
 @import './link.sass'
 
 body
-    font-family: 'PT Sans Caption', sans-serif    
+    font-family: 'PT Sans Caption', sans-serif
+    margin: 0
+    border-top: 5px solid $theme-color 
+    // background-color: #282c35
     
 .text-highlight
-    color: $text-highlight !important
+    color: $theme-color !important
     
