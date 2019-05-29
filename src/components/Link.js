@@ -26,8 +26,8 @@ const VOTE_MUTATION = gql`
 const Link = (props) => {
 
 	return (
-		<div id="link" className="flex mt2 items-start">
-			<div className="flex items-center">
+		<div id="link">
+			<div className="upvote-btn">
 				{/* <span className="gray">{props.index + 1}.</span> */}
 				{AUTH_TOKEN && (
 					<Mutation 
@@ -38,18 +38,19 @@ const Link = (props) => {
 						}
 					>
 						{voteMutation => (
-							<div className="ml1 gray f11" onClick={voteMutation}>
-								▲
+							<div onClick={voteMutation}>
+								<i className="fas fa-sort-up">
+								</i>
 							</div>
 						)}
 					</Mutation>
 				)}
 			</div>
-			<div className="ml1">
+			<div>
 				<div className="link-title">
-					{props.link.description} ({props.link.url})	
+					{props.link.description}
 				</div>
-				<div className="f6 lh-opy gray link-details">
+				<div className="link-details">
 					{props.link.votes.length} votes | by{' '}
 					{props.link.postedBy
 					  ? props.link.postedBy.name
@@ -58,6 +59,11 @@ const Link = (props) => {
 					&nbsp;
 					{timeDifferenceForDate(props.link.createdAt)}
 				</div>
+			</div>
+			<div className="link-btn">
+				<a href={props.link.url}>
+					<i className="far fa-external-link"></i>
+				</a>
 			</div>
 		</div>
 	)

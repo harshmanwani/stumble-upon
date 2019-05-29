@@ -1,4 +1,16 @@
 #link
+    display: flex
+    position: relative
+    margin: 20px 0
+    line-height: 1.5
+
+    .upvote-btn
+        padding: 5px 12px
+        font-size: 1.5rem
+        color: $text-dark
+        cursor: pointer
+        &:hover
+            color: $theme-color
     .link-title
         color: $text-dark
         margin: 0
@@ -6,3 +18,15 @@
         font-size: 1.2rem
     .link-details
         color: $text-light
+        font-size: 0.9rem
+    .link-btn a
+        position: absolute
+        right: 0
+        color: $text-light
+        cursor: pointer
+        padding: 8px 9px
+        border-radius: 50%
+        &:hover
+            // color: #fff
+            background: #fafafa
+            transition: all 0.3s
