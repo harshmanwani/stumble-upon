@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Link from './Link';
+import Loading from './Loading';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { LINKS_PER_PAGE } from '../constants'
@@ -170,7 +171,7 @@ const LinkList = (props) => {
 		<Query query={FEED_QUERY} variables={_getQueryVariables()}>
 			{
 				({ loading, error, data, subscribeToMore }) => {
-				if(loading) return <div>Fetching</div>
+				if(loading) return <Loading/>
 				if(error) return <div>Error</div>
 
 				_subscribeToNewLinks(subscribeToMore)

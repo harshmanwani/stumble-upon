@@ -12,7 +12,7 @@ import '../styles/App.sass';
 class App extends Component {
   render(){
     return (
-      <div className="center w85">
+      <div className="app">
         <Header/>
         <div>
           <Switch>
