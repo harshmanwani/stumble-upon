@@ -72,9 +72,16 @@ class Login extends Component {
 						onCompleted={data => this._confirm(data)}
 					>
 						{mutation => (
-							<div className="pointer mr2 button" onClick={mutation}>
-								{login ? 'login' : 'create account'}
+							<div class="theme-btn" onClick={mutation}>
+								<span>
+									{login ? 'login' : 'create account'}
+									&nbsp;
+									<i className="fal fa-long-arrow-right"></i>
+									</span>
 							</div>
+							// <div className="pointer mr2 button" onClick={mutation}>
+							// 	{login ? 'login' : 'create account'}
+							// </div>
 						)}
 					</Mutation>
 
