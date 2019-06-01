@@ -52,23 +52,33 @@ class Login extends Component {
 						// 	onChange={e => this.setState({ name: e.target.value })}
 						// />
 						<label for="name" class="input">
-							<input type="text" id="name" placeholder="&nbsp;"/>
+							<input type="text" id="name" placeholder="&nbsp;" value={name} onChange={e => this.setState({ name: e.target.value })}/>
 								<span class="label">Enter Your Name</span>
 								<span class="border"></span>
 						</label>
 					)}
-					<input 
+					<label for="email" class="input">
+						<input type="email" id="email" placeholder="&nbsp;" value={email} onChange={e => this.setState({ email: e.target.value })}/>
+						<span class="label">Enter Email</span>
+						<span class="border"></span>
+					</label>
+					{/* <input 
 						type="email"
 						placeholder="Your email address"
 						value={email}
 						onChange={e => this.setState({ email: e.target.value })}
-					/>
-					<input 
+					/> */}
+					<label for="pass" class="input">
+						<input type="password" id="pass" placeholder="&nbsp;" value={password} onChange={e => this.setState({ password: e.target.value })}/>
+						<span class="label">{login ? "Enter your password" : "Choose a safe password"}</span>
+						<span class="border"></span>
+					</label>
+					{/* <input 
 						type="password"
 						placeholder={login ? "Enter your password" : "Choose a safe password"}
 						value={password}
 						onChange={e => this.setState({ password: e.target.value })}
-					/>
+					/> */}
 				</div>
 				<div className="flex mt3">
 					<Mutation
