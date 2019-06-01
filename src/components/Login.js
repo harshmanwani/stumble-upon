@@ -45,12 +45,17 @@ class Login extends Component {
 				<h4 className="mv3">{ login ? 'Login' : 'Sign Up'}</h4>
 				<div className="flex flex-column">
 					{!login && (
-						<input 
-							type="text"
-							placeholder="Your Name"
-							value={name}
-							onChange={e => this.setState({ name: e.target.value })}
-						/>
+						// <input 
+						// 	type="text"
+						// 	placeholder="Your Name"
+						// 	value={name}
+						// 	onChange={e => this.setState({ name: e.target.value })}
+						// />
+						<label for="name" class="input">
+							<input type="text" id="name" placeholder="&nbsp;"/>
+								<span class="label">Enter Your Name</span>
+								<span class="border"></span>
+						</label>
 					)}
 					<input 
 						type="email"
@@ -72,7 +77,7 @@ class Login extends Component {
 						onCompleted={data => this._confirm(data)}
 					>
 						{mutation => (
-							<div class="theme-btn" onClick={mutation}>
+							<div className="theme-btn" onClick={mutation}>
 								<span>
 									{login ? 'login' : 'create account'}
 									&nbsp;
