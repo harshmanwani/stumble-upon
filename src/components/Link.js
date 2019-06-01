@@ -64,7 +64,7 @@ const Link = (props) => {
 				</div>
 			</div>
 			<div className="link-btn">
-				<a href={props.link.url} target="_blank">
+				<a href={props.link.url} target="_blank" rel="noopener noreferrer">
 					<i className="far fa-external-link"></i>
 				</a>
 			</div>
