@@ -47,13 +47,25 @@ class Search extends Component {
 	render() {
 		return (
 			<div>
-				<div>
-					Search
+				<div className="form">
+					<label htmlFor="search" className="input search">
+						<input 
+							type="text" 
+							id="search" 
+							placeholder="&nbsp;" 
+							onChange={e => this.setState({ filter: e.target.value })} 
+							onKeyDown={(e) => e.key === 'Enter' ? this._executeSearch() : null}
+						/>
+						<span className="label">Enter Keyword</span>
+						<span className="border"></span>
+						<i className="far fa-search" onClick={this._executeSearch}></i>
+					</label>
+					{/* Search
 					<input 
+					onChange={e => this.setState({ filter: e.target.value })}
 						type="text"
-						onChange={e => this.setState({ filter: e.target.value })}
 					/>
-					<button onClick={() => this._executeSearch()}>Ok</button>
+					<button onClick={() => this._executeSearch()}>Ok</button> */}
 				</div>
 				{this.state.links.map((link, index) => (
 					<Link
