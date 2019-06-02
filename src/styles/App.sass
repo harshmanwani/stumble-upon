@@ -2,15 +2,28 @@
 $text-dark: #4b4a4f
 $text-light: #aaafc6
 $theme-color: #e44a5d
+
+$dark-mode-text-light: #d8d8d8
+$dark-mode-text-dark: #848484 
+
+// $themes: (
+// 	light: (
+// 		bg: #fff
+// 	),
+// 	dark: (
+// 		bg: #282c35
+// 	),
+// );
     
 @import './header.sass'
+@import './footer.sass'
 @import './link.sass'
 @import './loading.sass'
 @import './about.sass'
 
 body
     font-family: 'PT Sans Caption', sans-serif
-    margin: 0
+    margin: 0 0 25px 0
     padding: 0
     border-top: 5px solid $theme-color 
     // background-color: #282c35
@@ -19,6 +32,16 @@ body
     max-width: 768px
     margin-left: auto
     margin-right: auto
+
+.app.dark
+	// .theme-btn
+	// 	color: $dark-mode-text-light !important
+	.link-title
+		color: $dark-mode-text-light !important
+	.link-details
+		color: $dark-mode-text-dark !important
+	.form-action-secondary
+		color: $text-light
 
 .highlight
 	cursor: pointer
@@ -92,7 +115,7 @@ body
     border: 0
     font-family: inherit
     padding: 12px 0
-    height: 48px
+    // height: 48px
     font-size: 16px
     font-weight: 500
     border-bottom: 2px solid #c8ccd4
@@ -123,7 +146,8 @@ body
 		top: 13px
 		right: 5px
 		cursor: pointer
-		transition: all .3s	
+		transition: all .3s
+		color: $text-light
 
 		&:hover
 			background-color: $theme-color

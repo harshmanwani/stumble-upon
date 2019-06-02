@@ -5,6 +5,9 @@ import { AUTH_TOKEN } from '../constants'
 import Logo from './Logo';
 
 class Header extends Component {
+	// constructor(props){
+	// 	super(props);
+	// }
 
 	render() {
 		const authToken = localStorage.getItem(AUTH_TOKEN)
@@ -38,6 +41,10 @@ class Header extends Component {
 
 					
 					<div className="right">
+
+						<button onClick={this.props.themeToggle}>
+							<i className="fal fa-sun"></i>
+						</button>
 
 						<Link to="/search" className={page.includes('search') ? 'text-highlight' : ''}>
 							<i className="fal fa-search"></i>
