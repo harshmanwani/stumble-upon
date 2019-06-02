@@ -196,12 +196,14 @@ const LinkList = (props) => {
 						}
 						{
 							isNewPage && (
-								<div className="flex ml4 mv3 gray">
-									<div className="pointer mr2" onClick={_previousPage}>
-										Previous
+								<div className="pagination-btn">
+									<div className="prev" onClick={_previousPage}>
+										<i className="fal fa-long-arrow-left"></i>
+											Previous
 									</div>
-									<div className="pointer" onClick={() => _nextPage(data)}>
-										Next
+									<div className="next" onClick={() => _nextPage(data)}>
+											Next
+										<i className="fal fa-long-arrow-right"></i>
 									</div>
 								</div>
 							)

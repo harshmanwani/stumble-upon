@@ -51,16 +51,16 @@ class Login extends Component {
 						// 	value={name}
 						// 	onChange={e => this.setState({ name: e.target.value })}
 						// />
-						<label for="name" class="input">
+						<label htmlFor="name" className="input">
 							<input type="text" id="name" placeholder="&nbsp;" value={name} onChange={e => this.setState({ name: e.target.value })}/>
-								<span class="label">Enter Your Name</span>
-								<span class="border"></span>
+								<span className="label">Enter Your Name</span>
+								<span className="border"></span>
 						</label>
 					)}
-					<label for="email" class="input">
+					<label htmlFor="email" className="input">
 						<input type="email" id="email" placeholder="&nbsp;" value={email} onChange={e => this.setState({ email: e.target.value })}/>
-						<span class="label">Enter Email</span>
-						<span class="border"></span>
+						<span className="label">Enter Email</span>
+						<span className="border"></span>
 					</label>
 					{/* <input 
 						type="email"
@@ -68,10 +68,10 @@ class Login extends Component {
 						value={email}
 						onChange={e => this.setState({ email: e.target.value })}
 					/> */}
-					<label for="pass" class="input">
+					<label htmlFor="pass" className="input">
 						<input type="password" id="pass" placeholder="&nbsp;" value={password} onChange={e => this.setState({ password: e.target.value })}/>
-						<span class="label">{login ? "Enter your password" : "Choose a safe password"}</span>
-						<span class="border"></span>
+						<span className="label">{login ? "Enter your password" : "Choose a safe password"}</span>
+						<span className="border"></span>
 					</label>
 					{/* <input 
 						type="password"
