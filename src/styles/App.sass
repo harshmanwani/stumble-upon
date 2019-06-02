@@ -56,7 +56,7 @@ body
 
 .input
   position: relative
-  margin: auto
+  margin: 10px auto
   width: 100%
   max-width: 280px
   .label
@@ -109,3 +109,40 @@ body
 .text-highlight
     color: $theme-color !important
     
+.form
+	display: flex
+	flex-direction: column
+	margin-top: 40px
+
+.form-actions
+	display: flex
+	flex-direction: column
+	align-items: center
+	margin-top: 15px
+
+.form-action-secondary
+	margin-top: 7px
+
+.underline-fill
+  position: relative
+  text-decoration: none
+  display: inline-block
+  cursor: pointer
+  padding: 0 1px
+  margin-left: 3px
+  transition: color ease 0.3s
+  &::after
+    content: ''
+    position: absolute
+    z-index: -1
+    width: 100%
+    height: 5%
+    left: 0
+    bottom: -3px
+    background-color: $theme-color
+    transition: all ease 0.3s
+  &:hover
+    color: white
+    &::after
+      height: 103%
+	

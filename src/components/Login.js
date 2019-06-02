@@ -42,8 +42,8 @@ class Login extends Component {
 
 		return (
 			<div>
-				<h4 className="mv3">{ login ? 'Login' : 'Sign Up'}</h4>
-				<div className="flex flex-column">
+				{/* <h4 className="mv3">{ login ? 'Login' : 'Sign Up'}</h4> */}
+				<div className="form">
 					{!login && (
 						// <input 
 						// 	type="text"
@@ -80,7 +80,7 @@ class Login extends Component {
 						onChange={e => this.setState({ password: e.target.value })}
 					/> */}
 				</div>
-				<div className="flex mt3">
+				<div className="form-actions">
 					<Mutation
 						mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
 						variables={{ email, password, name }}
@@ -101,13 +101,19 @@ class Login extends Component {
 					</Mutation>
 
 					<div 
-						className="pointer button"
+						className="form-action-secondary"
 						onClick={() => this.setState({ login: !login })}
 					>
 						{
 							login
-							  ? 'need to create an account'
-							  : 'already have an account?'
+							  ? <span>
+								  Don't have an account? 
+								  <span className="underline-fill">Sign up</span>
+								</span>
+							  : <span>
+								  Already have an account?
+								  <span className="underline-fill">Sign in</span>
+								</span>
 						}
 					</div>
 				</div>
