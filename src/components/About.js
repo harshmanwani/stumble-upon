@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfileImg from '../assets/profile-img.jpg';
 
 const About = () => (
     <div className="about">
@@ -33,7 +34,27 @@ const About = () => (
             </div>
         </div>
         <div className="profile">
-            
+            <div className="img">
+                <img src={ProfileImg} alt="Harsh Manwani"/>
+            </div>
+            <h4>Harsh Manwani</h4>
+            <div className="links">
+                <a href="https://www.linkedin.com/in/harshmanwani/" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-linkedin highlight"></i>
+                </a>
+                <a href="https://github.com/harshmanwani" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-github highlight"></i>
+                </a>
+                <a href="https://instagram.com/invokerharsh" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-instagram highlight"></i>
+                </a>
+                <a href="https://twitter.com/invokerharsh" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-twitter highlight"></i>
+                </a>
+                <a href="https://facebook.com/harshmanwani" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-facebook-f highlight"></i>
+                </a>
+            </div>
         </div>
     </div>
 )
