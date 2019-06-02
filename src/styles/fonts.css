@@ -5,3 +5,7 @@
     font-family: 'EliantoRegular';
     src: url('./fonts/Elianto-Regular.otf');
 }
+
+body {
+    transition: all 0.4s
+}

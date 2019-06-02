@@ -42,9 +42,7 @@ class Header extends Component {
 					
 					<div className="right">
 
-						<button onClick={this.props.themeToggle}>
-							<i className="fal fa-sun"></i>
-						</button>
+
 
 						<Link to="/search" className={page.includes('search') ? 'text-highlight' : ''}>
 							<i className="fal fa-search"></i>
@@ -69,6 +67,10 @@ class Header extends Component {
 						<Link to="/about" className={page.includes('about') ? 'text-highlight' : ''}>
 							About
 						</Link>
+
+						<button className="theme-toggle-btn" onClick={this.props.themeToggle}>
+							<i className={this.props.theme ? "fal fa-lightbulb-on" : "fal fa-lightbulb"}></i>
+						</button>
 					</div>
 
 				</div>

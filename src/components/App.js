@@ -31,7 +31,7 @@ class App extends Component {
   render(){
     return (
       <div className={this.state.theme ? "app dark" : "app"}>
-        <Header themeToggle={this.themeToggle}/>
+        <Header themeToggle={this.themeToggle} theme={this.state.theme}/>
         <div>
           <Switch>
             <Route exact path="/" render={() => <Redirect to='/new/1' />}/>
