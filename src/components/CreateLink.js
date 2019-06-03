@@ -27,21 +27,17 @@ class CreateLink extends Component {
 		const { description, url } = this.state
 		return (
 			<div>
-				<div className="flex flex-column mt3">
-					<input 
-						type="text"
-						className="mb2"
-						value={description}
-						onChange={e => this.setState({ description: e.target.value })}
-						placeholder="A description for the link"
-					/>
-					<input 
-						type="text"
-						className="mb2"
-						value={url}
-						onChange={e => this.setState({ url: e.target.value })}
-						placeholder="A URL for the link"
-					/>
+				<div className="form">
+					<label htmlFor="description" className="input">
+						<input type="text" id="description" placeholder="&nbsp;" value={description} onChange={e => this.setState({ description: e.target.value })} />
+						<span className="label">A description for the link</span>
+						<span className="border"></span>
+					</label>
+					<label htmlFor="url" className="input">
+						<input type="text" id="url" placeholder="&nbsp;" value={url} onChange={e => this.setState({ url: e.target.value })} />
+						<span className="label">Links URL</span>
+						<span className="border"></span>
+					</label>
 				</div>
 				
 				{/* update prop on mutation is called after the server has returned a response.
@@ -70,7 +66,15 @@ class CreateLink extends Component {
 					}}
 				>
 					{
-						postMutation => <button onClick={postMutation}>Submit</button>
+						postMutation => (
+							<div className="theme-btn" onClick={postMutation}>
+								<span>
+									Submit
+									&nbsp;
+									<i className="fal fa-check"></i>
+								</span>
+							</div>
+						)
 					}
 				</Mutation>
 

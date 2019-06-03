@@ -42,15 +42,8 @@ class Login extends Component {
 
 		return (
 			<div>
-				{/* <h4 className="mv3">{ login ? 'Login' : 'Sign Up'}</h4> */}
 				<div className="form">
 					{!login && (
-						// <input 
-						// 	type="text"
-						// 	placeholder="Your Name"
-						// 	value={name}
-						// 	onChange={e => this.setState({ name: e.target.value })}
-						// />
 						<label htmlFor="name" className="input">
 							<input type="text" id="name" placeholder="&nbsp;" value={name} onChange={e => this.setState({ name: e.target.value })}/>
 								<span className="label">Enter Your Name</span>
@@ -62,23 +55,11 @@ class Login extends Component {
 						<span className="label">Enter Email</span>
 						<span className="border"></span>
 					</label>
-					{/* <input 
-						type="email"
-						placeholder="Your email address"
-						value={email}
-						onChange={e => this.setState({ email: e.target.value })}
-					/> */}
 					<label htmlFor="pass" className="input">
 						<input type="password" id="pass" placeholder="&nbsp;" value={password} onChange={e => this.setState({ password: e.target.value })}/>
 						<span className="label">{login ? "Enter your password" : "Choose a safe password"}</span>
 						<span className="border"></span>
 					</label>
-					{/* <input 
-						type="password"
-						placeholder={login ? "Enter your password" : "Choose a safe password"}
-						value={password}
-						onChange={e => this.setState({ password: e.target.value })}
-					/> */}
 				</div>
 				<div className="form-actions">
 					<Mutation
@@ -94,9 +75,6 @@ class Login extends Component {
 									<i className="fal fa-long-arrow-right"></i>
 									</span>
 							</div>
-							// <div className="pointer mr2 button" onClick={mutation}>
-							// 	{login ? 'login' : 'create account'}
-							// </div>
 						)}
 					</Mutation>
 
