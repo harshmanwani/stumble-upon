@@ -67,12 +67,12 @@ class CreateLink extends Component {
 				>
 					{
 						postMutation => (
-							<div className="theme-btn" onClick={postMutation}>
-								<span>
-									Submit
-									&nbsp;
-									<i className="fal fa-check"></i>
-								</span>
+							<div className="form-actions">
+								<div className="theme-btn" onClick={postMutation}>
+									<span>
+										Submit
+									</span>
+								</div>
 							</div>
 						)
 					}
