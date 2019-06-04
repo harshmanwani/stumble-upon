@@ -16,7 +16,8 @@ const About = () => (
         </div>
         <br/>
         <div>
-            This is just a hobby project made with 
+            This is just a fun project I made for our group of friends to share links with and have it all at one place.
+            It's built with 
             <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
                 <span className="react underline-fill"><i className="fab fa-react"></i>&nbsp;React</span>
             </a>
