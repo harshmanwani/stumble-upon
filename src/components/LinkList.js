@@ -172,7 +172,10 @@ const LinkList = (props) => {
 			{
 				({ loading, error, data, subscribeToMore }) => {
 				if(loading) return <Loading/>
-				if(error) return <div>Error</div>
+				if(error) {
+					// console.log(error)
+					return <div>Error</div>
+				}
 
 				_subscribeToNewLinks(subscribeToMore)
 				_subscribeToNewVotes(subscribeToMore)

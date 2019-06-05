@@ -12,10 +12,10 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
+import { endpoint, prodEndpoint } from './config.js'
 
 const httpLink = createHttpLink({
-	uri: "http://localhost:4000"
+	uri: process.env.NODE_ENV === 'development' ? `http${endpoint}` : `https${prodEndpoint}`,
 })
 
 const authLink = setContext((_, { headers }) => {
@@ -29,7 +29,7 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const wsLink = new WebSocketLink({
-	uri: `ws://localhost:4000`,
+	uri: process.env.NODE_ENV === 'development' ? `wss${endpoint}` : `wss${prodEndpoint}`,
 	options: {
 		reconnect: true,
 		connectionParams: {
