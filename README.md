@@ -1,3 +1,3 @@
-##Stumble Upon
+## Stumble Upon
 
-use yarn start in root folder and server folder to run both on local.
+A link sharing platform built with react & graphql
