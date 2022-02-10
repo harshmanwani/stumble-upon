@@ -8,7 +8,7 @@
     "apollo-link-ws": "^1.0.17",
     "graphql": "^14.2.1",
     "marked": "^0.6.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
